@@ -5,17 +5,15 @@ from selenium.common.exceptions import WebDriverException
 
 import time
 
-MAX_WAIT = 10
+MAX_WAIT = 3 
 
 class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
 
-
     def tearDown(self):
         self.browser.quit()
-
 
     def wait_for_row_in_list_table(self, row_text):
         start_time = time.time()
@@ -67,8 +65,8 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys(Keys.ENTER)
 
         # The page updates again, and now shows both items on her list
-        self.wait_for_row_in_list_table('1: Buy peacock feathers')
         self.wait_for_row_in_list_table('2: Use peacock feather to make a fly')
+        self.wait_for_row_in_list_table('1: Buy peacock feathers')
 
         # Satisfied, she goes back to sleep
 
@@ -92,9 +90,8 @@ class NewVisitorTest(LiveServerTestCase):
         # Francis visits the home page. There is no sign of Edith's list
         self.browser.get(self.live_server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
-        self.AssertNotIn('Buy peacock feathers', page_text)
-        self.AssertNotIn('make a fly', page_text)
-
+        self.assertNotIn('Buy peacock feathers', page_text)
+        self.assertNotIn('make a fly', page_text)
 
         # Francis starts a new list by entering a new item. He
         # is less interesting than Edith...
