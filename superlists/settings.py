@@ -81,6 +81,7 @@ DATABASES = {
     }
 }
 
+TEST_RUNNER = "green.djangorunner.DjangoRunner"
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
