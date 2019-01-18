@@ -133,3 +133,5 @@ db.sqlite3
 geckodriver.log
 virtualenv
 *.swp
+static/
+lists/static/
