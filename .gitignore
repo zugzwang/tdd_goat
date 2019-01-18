@@ -135,3 +135,4 @@ virtualenv
 *.swp
 static/
 lists/static/
+/static
