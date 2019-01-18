@@ -134,3 +134,4 @@ geckodriver.log
 virtualenv
 *.swp
 
+.env
